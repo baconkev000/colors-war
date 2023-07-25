@@ -6,10 +6,8 @@
   <div class="px-10 h-24">
   <app-navigation></app-navigation></div>
   <div class="bg-slate-300 h-[calc(100vh-96px)] flex justify-center items-center">
-    <div *ngIf="!(loggedIn$ | async);else elseBlock" >
-      <div *ngIf="!(loggedIn$ | async);else elseBlock" >
-      <app-welcome></app-welcome>
-     </div>
+    <div *ngIf="!(user$ | async)!.loggedIn;else elseBlock" > <!-- If a user is not logged in show the welcome page-->
+        <app-welcome></app-welcome>
       <ng-template #elseBlock>
         <app-login></app-login>
       </ng-template>

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
+import { User } from './store/models/user';
+import { UserState, selectUser } from './store/reducers/user.reducer';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent{
   title = 'colors-war';
-  loggedIn$: Observable<boolean>;
-
-  constructor(private store: Store<{ loggedIn: boolean }>) {
-    this.loggedIn$ = store.select('loggedIn');
+  user$: Observable<any>;
+  constructor(private store: Store<UserState>) {
+    this.user$ = store.pipe(select(selectUser))
   }
 
 }

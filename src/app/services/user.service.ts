@@ -26,14 +26,3 @@ export class UserService {
         return this.http.get(url, options);
     }
 }
-
-
-/**
- * Test User data
- * 
- * {
-    email: 'k@k.com',
-    password: 'testPassword123!',
-    loggedIn: false,
-  };
- */

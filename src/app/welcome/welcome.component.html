@@ -1,13 +1,16 @@
 <div class="">
-    <div class="text-center">
-    <h1 class="text-3xl font-bold">
-        Well this is boring... choose a color group!
-    </h1>
-    <div class="flex flex-row justify-center">
-    <div *ngFor="let color of colors" [appHover]="color" class="w-32 h-32 p-5 m-2 flex flex-row justify-center items-center bg-slate-400 cursor-pointer">
-        {{color}}
+    <div *ngIf="!colorSelected !== undefined;else colorElseBlock">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold">
+                Well this is boring... choose a color group!
+            </h1>
+            <div class="flex flex-row justify-center">
+            <div *ngFor="let color of colors" [appHover]="color" (click)="selectColor()" class="w-32 h-32 p-5 m-2 flex flex-row justify-center items-center bg-slate-400 cursor-pointer">
+                {{color}}
+            </div>
+            </div>
+            <span class="text-sm">Choose the color of the group you would like to join.</span>
+        </div>
     </div>
-    </div>
-    <span class="text-sm">Choose the color of the group you would like to join.</span>
-</div>
+    <ng-template #colorElseBlock></ng-template>
 </div>

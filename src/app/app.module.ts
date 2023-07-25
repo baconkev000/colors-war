@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'; 
 
 import { StoreModule } from '@ngrx/store';
-import { loginReducer } from './store/login/login.reducer'
+import { reducers } from './store/reducers';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -24,7 +24,7 @@ import { LoginComponent } from './auth/login/login.component';
     LoginComponent,
   ],
   imports: [
-    BrowserModule, HttpClientModule, ReactiveFormsModule, StoreModule.forRoot({loggedIn: loginReducer})
+    BrowserModule, HttpClientModule, ReactiveFormsModule, StoreModule.forRoot(reducers)
   ],
   providers: [],
   bootstrap: [AppComponent]
