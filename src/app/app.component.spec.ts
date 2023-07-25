@@ -1,9 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HoverDirective } from './hover.directive';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
+          imports: [HttpClientTestingModule], 
+    declarations: [AppComponent, NavigationComponent, WelcomeComponent, HoverDirective],
+      providers: [provideMockStore({})],
   }));
 
   it('should create the app', () => {
@@ -18,10 +25,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('colors-war');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('colors-war app is running!');
-  });
 });

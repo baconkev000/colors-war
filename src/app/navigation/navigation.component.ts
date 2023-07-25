@@ -11,7 +11,7 @@ export class NavigationComponent{
   loginOrOutText: string;
 
   constructor(private logInService: LogInService) {
-    this.loginOrOutText = logInService.getLoginOrOutText();
+    this.loginOrOutText = this.logInService.getLoginOrOutText();
   }
   
 }

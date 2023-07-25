@@ -1,8 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LogInService } from 'src/app/services/login.service';
-import { Constants } from 'src/app/config/constants';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,8 +16,9 @@ export class LoginComponent {
 
   login() {
     // Call API with username and password
-   
+    
     if (this.loginForm.invalid) return;
+    this.logInService.updateLoggingIn();
     try {
       this.logInService.logInOrOut();
       // this.userService.getUser().subscribe((response) => {

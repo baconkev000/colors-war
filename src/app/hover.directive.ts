@@ -4,6 +4,8 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
     selector: '[appHover]'
 })
 export class HoverDirective {
+    // changes the backround color of any element hovered with this directive
+    // @param color: string
     constructor(private el: ElementRef) { }
 
     @Input('appHover') hoverColor: string | undefined;
@@ -13,9 +15,6 @@ export class HoverDirective {
     }
     @HostListener('mouseleave') mouseLeave() {
         this.hover('rgb(148 163 184)');
-    }
-    @HostListener('click') onMouseClick() {
-        this.hover('blue');
     }
     
     

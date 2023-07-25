@@ -5,11 +5,17 @@
 <div class="h-screen relative">
   <div class="px-10 h-24">
   <app-navigation></app-navigation></div>
-  <div *ngIf="(loggedIn$ | async)" class="bg-slate-300 h-[calc(100vh-96px)] flex justify-center items-center">
-    <app-welcome></app-welcome>
-  </div>
-  <div #elseBlock class="bg-slate-300 h-[calc(100vh-96px)] flex justify-center items-center">
-      <app-login></app-login>
+  <div class="bg-slate-300 h-[calc(100vh-96px)] flex justify-center items-center">
+    <div *ngIf="!(loggedIn$ | async);else elseBlock" >
+      <div *ngIf="!(loggedIn$ | async);else elseBlock" >
+      <app-welcome></app-welcome>
+     </div>
+      <ng-template #elseBlock>
+        <app-login></app-login>
+      </ng-template>
+    </div>
+    <ng-template #elseBlock>
+    </ng-template>
   </div>
 </div>
 
