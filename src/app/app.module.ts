@@ -1,14 +1,30 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
+
+import { StoreModule } from '@ngrx/store';
+import { loginReducer } from './store/login/login.reducer'
 
 import { AppComponent } from './app.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HoverDirective } from './hover.directive';
+import { ColorPageComponent } from './color-page/color-page.component';
+import { LoginComponent } from './auth/login/login.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    WelcomeComponent,
+    NavigationComponent,
+    HoverDirective,
+    ColorPageComponent,
+    LoginComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule, ReactiveFormsModule, StoreModule.forRoot({loggedIn: loginReducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
