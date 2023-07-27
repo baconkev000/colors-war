@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { LogInService } from '../services/login.service';
+import { UserService } from '../services/user.service';
+import { UserState, selectUser } from '../store/reducers/user.reducer';
+import { User } from '../store/models/user';
+import { Store , select} from '@ngrx/store';
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
@@ -7,11 +10,10 @@ import { LogInService } from '../services/login.service';
 })
 export class WelcomeComponent {
   colors: string[] = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
-  colorSelected: string | undefined = undefined;
-  constructor(private loginService: LogInService) {
-    
+  constructor(private userService: UserService, private store: Store<UserState>) {
   }
-  selectColor() {
-    
+  selectColor(color: string) {
+    this.userService.updateUserColor(color);
+    this.store.pipe(select(selectUser)).subscribe(val => { console.log(val.color)})
   }
 }

@@ -11,7 +11,7 @@ const initialState: UserState = {
     name: 'Guest',
     userName: 'Guest',
     phone: '',
-    color: '',
+    color: undefined,
     isAdmin: false,
     loggedIn: false
   })
@@ -24,36 +24,33 @@ export function userReducer(userState = initialState, action: any):
         return {
           ...userState,
           user: new User({
-                id: -1,
-    name: 'Guest',
-    userName: 'Guest',
-    phone: '',
-    color: '',
-    isAdmin: false,
-    loggedIn: false
+            id: -1,
+            name: 'Guest',
+            userName: 'Guest',
+            phone: '',
+            color: undefined,
+            isAdmin: false,
+            loggedIn: false
           })
         };
       case UserActionTypes.ACTION_LOGIN:
+        return action.payload;
+      case UserActionTypes.ACTION_UPDATE_COLOR:
         return {
           ...userState,
           user: new User({
-                id: -1,
-                name: 'Kevin Bacon',
-                userName: 'kevinbacon',
-                phone: '8017550777',
-                color: 'black',
-                isAdmin: false,
-                loggedIn: true
+            id: userState.user.id,
+            name: userState.user.name,
+            userName: userState.user.userName,
+            phone: userState.user.phone,
+            color: action.payload.color,
+            isAdmin: userState.user.isAdmin,
+            loggedIn: userState.user.loggedIn
           })
-          /**
-           * user: new User({
-           * userName: action.payload
-           * isAdmin: action.payload,
-           * loggedIn: action.payload,})
-           */
         }
+      default:
+        return userState;
     }
-  return userState;
 }
 
 export const selectUserState = (state: any) => state.userState;
