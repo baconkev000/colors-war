@@ -7,7 +7,7 @@ import { LogInService } from '../services/login.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent{
-  title: string = "Color Wars"
+  title = "Color Wars"
   loginOrOutText: string;
 
   constructor(private logInService: LogInService) {

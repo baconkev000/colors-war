@@ -12,6 +12,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HoverDirective } from './hover.directive';
 import { ColorPageComponent } from './color-page/color-page.component';
 import { LoginComponent } from './auth/login/login.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { LoginComponent } from './auth/login/login.component';
     HoverDirective,
     ColorPageComponent,
     LoginComponent,
+    LeaderboardComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, ReactiveFormsModule, StoreModule.forRoot(reducers)

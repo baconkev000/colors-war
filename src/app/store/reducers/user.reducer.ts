@@ -11,7 +11,7 @@ const initialState: UserState = {
     name: 'Guest',
     userName: 'Guest',
     phone: '',
-    color: undefined,
+    color: { name: 'gray',color: 'rgb(203 213 225)'},
     isAdmin: false,
     loggedIn: false
   })
@@ -23,15 +23,7 @@ export function userReducer(userState = initialState, action: any):
       case UserActionTypes.ACTION_LOGOUT:
         return {
           ...userState,
-          user: new User({
-            id: -1,
-            name: 'Guest',
-            userName: 'Guest',
-            phone: '',
-            color: undefined,
-            isAdmin: false,
-            loggedIn: false
-          })
+          user: initialState.user
         };
       case UserActionTypes.ACTION_LOGIN:
         return action.payload;

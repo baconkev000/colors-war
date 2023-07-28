@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaderboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Color</th>
+                <th>Users</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Replace the sample data with your actual leaderboard data -->
+            <tr *ngFor="let colorGroup of orderedColorGroup; let i = index;">
+                <td>{{i}}</td>
+                <td>{{colorGroup.color}}</td>
+                <td>{{colorGroup.users.length}}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

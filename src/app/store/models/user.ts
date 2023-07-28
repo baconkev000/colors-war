@@ -1,3 +1,4 @@
+import { Color } from "./color";
 export class User {
   id: number;
   name: string;
@@ -5,7 +6,7 @@ export class User {
     email: string;
     phone: string;
     isAdmin: boolean;
-    color: string | undefined;
+    color: Color;
     loggedIn: boolean;
     
   constructor(data: any) {

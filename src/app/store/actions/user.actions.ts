@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store"
+import { Color } from "../models/color"
 
 export enum UserActionTypes {
     ACTION_LOGIN = '[App Component] Login Or Out',
@@ -16,5 +17,5 @@ export class ACTION_LOGOUT implements Action {
 export class ACTION_UPDATE_COLOR implements Action {
     readonly type = UserActionTypes.ACTION_UPDATE_COLOR
 
-    constructor(public payload: { color: string }) { }
+    constructor(public payload: { color: Color }) { }
 }

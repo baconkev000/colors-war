@@ -5,15 +5,13 @@
 <div class="h-screen relative">
   <div class="px-10 h-24">
   <app-navigation></app-navigation></div>
-  <div [ngClass]="{'bg-slate-300': user$.color == undefined,'h-[calc(100vh-96px)] flex justify-center items-center': true}" class={{userBackgroundColor}}>
-    <div *ngIf="!user$.loggedIn;else elseBlock" > <!-- If a user is not logged in show the welcome page-->
-        <app-welcome></app-welcome>
+    <div class="h-[calc(100vh-96px)] flex justify-center items-center grid grid-cols-4" [ngStyle]="{'background-color': user.color.color}">
+      <div class="col-span-1 bg-slate-600"><app-leaderboard></app-leaderboard></div>
+      <div *ngIf="!user.loggedIn;else elseBlock" class="col-span-3"> <!-- If a user is not logged in show the welcome page-->
+          <app-welcome></app-welcome>
+      </div>
       <ng-template #elseBlock>
-        <app-login></app-login>
       </ng-template>
     </div>
-    <ng-template #elseBlock>
-    </ng-template>
-  </div>
 </div>
 

@@ -9,9 +9,8 @@ import { User } from './store/models/user';
 })
 export class AppComponent{ 
   title = 'colors-war';
-  user$: User;
-  userBackgroundColor: string | undefined;
+  user: User;
   constructor(private store: Store<UserState>) {
-    this.store.pipe(select(selectUser)).subscribe(val => { this.user$ = val; this.userBackgroundColor = `bg-[${val.color}]` })
+    this.store.pipe(select(selectUser)).subscribe(val => { this.user = val; })
   }
   }
