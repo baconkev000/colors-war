@@ -11,6 +11,6 @@ export class AppComponent{
   title = 'colors-war';
   user: User;
   constructor(private store: Store<UserState>) {
-    this.store.pipe(select(selectUser)).subscribe(val => { this.user = val; })
+    this.store.pipe(select(selectUser)).subscribe(user => { this.user = user; })
   }
   }

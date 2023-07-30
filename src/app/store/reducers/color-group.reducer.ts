@@ -4,7 +4,7 @@ import { ColorGroup } from '../models/colorGroup';
 import { Color } from '../models/color';
 
 export interface ColorGroupState {
-  colorGroups: ColorGroup[];
+  colorGroupsArray: ColorGroup[];
 }
 const COLORS: Color[] = [
         { name: 'Red', color: '#ad3232' },
@@ -17,21 +17,19 @@ const COLORS: Color[] = [
         
 const initialState: ColorGroupState = {
   // initial users and comments should be populated from db
-  colorGroups: COLORS.map((color: Color) => new ColorGroup({ color: color, users:[], comments:[] }))
+  colorGroupsArray: COLORS.map((color: Color) => new ColorGroup({ color: color, users: [], comments: [] }))
 }
-
-// find and update the user arry of the two color groups being updated
-// update new color group by adding user
-// update old color group by removing user
-// get color groups then filter for specific group to update then update
 
 export function colorGroupReducer(colorGroupState = initialState, action: any):
   ColorGroupState{
-    switch (action.type) {
+  switch (action.type) {
+      // find and update the user array of the two color groups being updated
+      // update new color group by adding user
+      // update old color group by removing user
       case ColorGroupActionTypes.ACTION_UPDATE_COLOR_GROUP_USERS:
         return {
           ...colorGroupState,
-          colorGroups: updateColorGroup(colorGroupState, action.payload)
+          colorGroupsArray: updateColorGroup(colorGroupState, action.payload)
         };
 
       default:
@@ -41,15 +39,14 @@ export function colorGroupReducer(colorGroupState = initialState, action: any):
 
 const updateColorGroup = (state: ColorGroupState, payload: any) => {
   // get new and old color group indexes
-  const newColorGroupIndex: number = state.colorGroups.findIndex((colorGroup: ColorGroup) => colorGroup === payload.newColorGroup);
-  const oldColorGroupIndex: number = state.colorGroups.findIndex((colorGroup: ColorGroup) => colorGroup === payload.oldColorGroup);
+  const newColorGroupIndex: number = state.colorGroupsArray.findIndex((colorGroup: ColorGroup) => colorGroup === payload.newColorGroup);
+  const oldColorGroupIndex: number = state.colorGroupsArray.findIndex((colorGroup: ColorGroup) => colorGroup === payload.oldColorGroup);
 
   // update the new and old color groups with updated user lists
-  state.colorGroups[newColorGroupIndex].users.push(payload.user);
-  state.colorGroups[oldColorGroupIndex].users = state.colorGroups[oldColorGroupIndex].users.filter((user: number) => user !== payload.userID);
-  return state.colorGroups;
+  state.colorGroupsArray[newColorGroupIndex].users.push(payload.user);
+  state.colorGroupsArray[oldColorGroupIndex].users = state.colorGroupsArray[oldColorGroupIndex].users.filter((user: number) => user !== payload.userID);
+  return state.colorGroupsArray;
 }
 
 export const selectColorGroupsState = (state: any) => state.colorGroupState;
-export const selectColorGroup = createSelector(selectColorGroupsState, (state) => state.colorGroup);
-2
+export const selectColorGroup = createSelector(selectColorGroupsState, (state) => state.colorGroupsArray);

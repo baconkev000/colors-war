@@ -40,8 +40,8 @@
         <tbody>
             <!-- Replace the sample data with your actual leaderboard data -->
             <tr *ngFor="let colorGroup of orderedColorGroup; let i = index;">
-                <td>{{i}}</td>
-                <td>{{colorGroup.color}}</td>
+                <td>{{i + 1}}</td>
+                <td>{{colorGroup.color.name}}</td>
                 <td>{{colorGroup.users.length}}</td>
             </tr>
         </tbody>
