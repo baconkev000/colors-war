@@ -11,16 +11,16 @@ export class HoverDirective {
     @Input('appHover') hoverColor: string | undefined;
 
     @HostListener('mouseenter') mouseEnter() {
-        this.hover(this.hoverColor || 'red');
+        this.hover(this.hoverColor || 'white');
     }
     @HostListener('mouseleave') mouseLeave() {
-        this.hover('rgb(148 163 184)');
+        this.hover('white');
     }
     
     
     private hover(color: string) {
         this.el.nativeElement.style.backgroundColor = color;
-        if (color === 'rgb(148 163 184)') {
+        if (color === 'white') {
             this.el.nativeElement.style.color = 'black';
         } else {
             this.el.nativeElement.style.color = 'white';

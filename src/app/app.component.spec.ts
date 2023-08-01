@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { provideMockStore } from '@ngrx/store/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -9,7 +10,7 @@ import { HoverDirective } from './hover.directive';
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
           imports: [HttpClientTestingModule], 
-    declarations: [AppComponent, NavigationComponent, WelcomeComponent, HoverDirective],
+    declarations: [AppComponent, NavigationComponent, WelcomeComponent, HoverDirective, LeaderboardComponent],
       providers: [provideMockStore({})],
   }));
 

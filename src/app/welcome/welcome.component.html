@@ -1,15 +1,14 @@
-<div class="">
-    <div >
-        <div class="text-center">
-            <h1 class="text-3xl font-bold">
+        <div class="flex flex-col items-center">
+            <h1 class="text-3xl font-bold text-white">
                 Welcome to Color Wars!
             </h1>
             <div class="flex flex-row justify-center">
-            <div *ngFor="let color of colors" [appHover]="color.color" (click)="selectColor({name: color.name,color:color.color})" onkeydown="selectColor({name: color.name,color:color.color})" class="w-32 h-32 p-5 m-2 flex flex-row justify-center items-center bg-slate-400 cursor-pointer">
-                <div>{{color.name}}</div>
+                <div *ngFor="let color of colors" [appHover]="color.color" (click)="selectColor({name: color.name,color:color.color, altColor: color.altColor})" class="w-32 h-32 p-5 m-2 flex flex-row justify-center items-center bg-[white] cursor-pointer">
+                    <div>{{color.name}}</div> 
+                </div>
             </div>
-            </div>
-            <span class="text-sm">Choose the color of the group you would like to join.</span>
+            <span class="text-sm text-white">Choose the color of the group you would like to join.</span>
+            <button class="bg-slate-600 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded w-auto mt-5" (click)="openLoginModal()">
+                Sign Up
+            </button>
         </div>
-    </div>
-</div>

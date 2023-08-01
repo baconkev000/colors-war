@@ -2,18 +2,11 @@ import { ColorGroupActionTypes } from '../actions/color-group.actions';
 import { createSelector } from '@ngrx/store';
 import { ColorGroup } from '../models/colorGroup';
 import { Color } from '../models/color';
+import { COLORS } from 'src/app/config/constants';
 
 export interface ColorGroupState {
   colorGroupsArray: ColorGroup[];
 }
-const COLORS: Color[] = [
-        { name: 'Red', color: '#ad3232' },
-        { name: 'Orange', color: '#ad6732' },
-        { name: 'Yellow', color: '#a9ad32' },
-        { name: 'Green', color: '#32ad40' },
-        { name: 'Blue', color: '#32a3ad' },
-        { name: 'Indigo', color: '#3236ad' },
-        { name: 'Violet', color: '#ad32a9' }];
         
 const initialState: ColorGroupState = {
   // initial users and comments should be populated from db

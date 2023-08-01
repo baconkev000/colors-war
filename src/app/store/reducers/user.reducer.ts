@@ -11,9 +11,10 @@ const initialState: UserState = {
     name: 'Guest',
     userName: 'Guest',
     phone: '',
-    color: { name: 'gray',color: 'rgb(203 213 225)'},
+    color: { name: 'gray', color: 'rgb(100 116 139)'},
     isAdmin: false,
-    loggedIn: false
+    loggedIn: false,
+    loggingIn: false,
   })
 };
 
@@ -37,7 +38,22 @@ export function userReducer(userState = initialState, action: any):
             phone: userState.user.phone,
             color: action.payload.color,
             isAdmin: userState.user.isAdmin,
-            loggedIn: userState.user.loggedIn
+            loggedIn: userState.user.loggedIn,
+            loggingIn: userState.user.loggingIn
+          })
+        };
+      case UserActionTypes.ACTION_UPDATE_LOGGING_IN_STATUS:
+        return {
+          ...userState,
+          user: new User({
+            id: userState.user.id,
+            name: userState.user.name,
+            userName: userState.user.userName,
+            phone: userState.user.phone,
+            color: userState.user.color,
+            isAdmin: userState.user.isAdmin,
+            loggedIn: userState.user.loggedIn,
+            loggingIn: !userState.user.loggingIn,
           })
         }
       default:

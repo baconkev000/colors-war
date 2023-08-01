@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideMockStore } from '@ngrx/store/testing';
 import { LeaderboardComponent } from './leaderboard.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('LeaderboardComponent', () => {
   let component: LeaderboardComponent;
@@ -8,7 +9,9 @@ describe('LeaderboardComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [LeaderboardComponent]
+      imports: [HttpClientTestingModule],
+      declarations: [LeaderboardComponent],
+      providers: [provideMockStore({})],
     });
     fixture = TestBed.createComponent(LeaderboardComponent);
     component = fixture.componentInstance;

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LogInService } from 'src/app/services/login.service';
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
 })
-export class LoginComponent {
+export class LoginModalComponent {
   constructor(private logInService: LogInService){}
   user: any;
   loginForm = new FormGroup({

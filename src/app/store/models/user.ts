@@ -8,6 +8,7 @@ export class User {
     isAdmin: boolean;
     color: Color;
     loggedIn: boolean;
+    loggingIn: false;
     
   constructor(data: any) {
     Object.assign(this, data);

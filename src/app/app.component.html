@@ -3,15 +3,27 @@
 </style>
 
 <div class="h-screen relative">
-  <div class="px-10 h-24">
-  <app-navigation></app-navigation></div>
-    <div class="h-[calc(100vh-96px)] flex justify-center items-center grid grid-cols-4" [ngStyle]="{'background-color': user.color.color}">
-      <div class="col-span-1 bg-slate-600"><app-leaderboard></app-leaderboard></div>
-      <div *ngIf="!user.loggedIn;else elseBlock" class="col-span-3"> <!-- If a user is not logged in show the welcome page-->
-          <app-welcome></app-welcome>
+    <div *ngIf="user.loggingIn" class="bg-black bg-opacity-70 absolute h-screen w-screen">
+      <div class="p-5 right-0 absolute cursor-pointer" (click)="closeModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="white" class="w-10 h-10">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+</svg></div>
+
+      <app-login-modal class=""></app-login-modal>
+    </div>
+
+    <div >
+      <div class="px-10 h-24">
+        <app-navigation></app-navigation>
       </div>
-      <ng-template #elseBlock>
-      </ng-template>
+      <div class="h-[calc(100vh-96px)] flex justify-center items-center grid grid-cols-4" [ngStyle]="{'background-color': user.color.color}">
+        <div class="col-span-1 bg-slate-600 flex h-full items-center justify-center text-center"><app-leaderboard></app-leaderboard></div>
+        <div *ngIf="!user.loggedIn;else elseBlock" class="col-span-3 flex justify-center items-center flex-col text-center"> <!-- If a user is not logged in show the welcome page-->
+            <app-welcome></app-welcome>
+        </div>
+        <ng-template #elseBlock>
+        </ng-template>
+      </div>
     </div>
 </div>
 

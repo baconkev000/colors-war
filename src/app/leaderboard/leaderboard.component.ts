@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ColorGroup } from '../store/models/colorGroup';
 import { Store, select } from '@ngrx/store';
 import { selectColorGroup } from '../store/reducers/color-group.reducer';
+import { selectUser } from '../store/reducers/user.reducer';
 import { Color } from '../store/models/color';
 
 @Component({
@@ -11,9 +12,13 @@ import { Color } from '../store/models/color';
 })
 export class LeaderboardComponent {
   orderedColorGroup: ColorGroup[];
-  constructor(private store: Store) {
-    this.store.pipe(select(selectColorGroup)).subscribe(colorGroup => {
-      this.orderedColorGroup = this.sortColorGroups(colorGroup) })
+  userColor: Color;
+  constructor(private colorGroupStore: Store,private userStore: Store) {
+    this.colorGroupStore.pipe(select(selectColorGroup)).subscribe(colorGroup => {
+      this.orderedColorGroup = this.sortColorGroups(colorGroup)
+    })
+        this.userStore.pipe(select(selectUser)).subscribe(user => { this.userColor = user.color.color; })
+
   }
 
   sortColorGroups = (colorGroup: ColorGroup[]) => {

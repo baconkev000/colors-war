@@ -36,7 +36,9 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "off"
+        "@typescript-eslint/no-explicit-any": "off",
+        "@angular-eslint/template/click-events-have-key-events": "off",
+        "@angular-eslint/template/interactive-supports-focus": "off",
       }
     }
   ]

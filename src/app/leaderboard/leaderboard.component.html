@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
+
 <head>
-    <title>Leaderboard</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
         table {
             border-collapse: collapse;
             width: 60%;
@@ -19,17 +14,14 @@
         th {
             background-color: #f2f2f2;
         }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
         tr:hover {
             background-color: #ddd;
         }
     </style>
 </head>
-<body>
-    <h1>Leaderboard</h1>
-    <table>
+<div>
+    <h1 class="text-white">Leaderboard</h1>
+    <table [ngStyle]="{'border-color':userColor}" class="border-[6px]">
         <thead>
             <tr>
                 <th>Rank</th>
@@ -39,12 +31,11 @@
         </thead>
         <tbody>
             <!-- Replace the sample data with your actual leaderboard data -->
-            <tr *ngFor="let colorGroup of orderedColorGroup; let i = index;">
+            <tr *ngFor="let colorGroup of orderedColorGroup; let i = index;" class="[&>*:nth-child(even)]:bg-[#f2f2f2] bg-[#f2f2f2]">
                 <td>{{i + 1}}</td>
-                <td>{{colorGroup.color.name}}</td>
+                <td [ngStyle]="{'color': colorGroup.color.color}">{{colorGroup.color.name}}</td>
                 <td>{{colorGroup.users.length}}</td>
             </tr>
         </tbody>
     </table>
-</body>
-</html>
+</div>
